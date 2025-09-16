@@ -16,6 +16,8 @@ import { ResponseBuilderService } from '../response-builder/response-builder.ser
 import { ResponseBuilder } from '../response-builder/interface/response.builder.interface';
 import { ZodValidationPipe } from '../zod/zod.pipe';
 import { CreateCatDto, createCatSchema } from './dto/cat.dto';
+import { Role } from '../role/role.enum';
+import { Roles } from '../role/role.decorator';
 
 @Controller('cat')
 export class CatController {
@@ -57,6 +59,7 @@ export class CatController {
   }
 
   @Post('create')
+  @Roles(Role.Admin)
   @HttpCode(HttpStatus.CREATED)
   @UsePipes(new ZodValidationPipe(createCatSchema))
   createCat(@Body() body: CreateCatDto): ResponseBuilder<{ cat: unknown }> {

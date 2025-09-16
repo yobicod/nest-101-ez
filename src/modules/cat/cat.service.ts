@@ -28,9 +28,6 @@ export class CatService {
   }
 
   public findByName(name: string): Cat[] | [] {
-    console.log(
-      this.cats.filter((cat) => cat.name.toLowerCase() === name.toLowerCase()),
-    );
     return this.cats.filter(
       (cat) => cat.name.toLowerCase() === name.toLowerCase(),
     );

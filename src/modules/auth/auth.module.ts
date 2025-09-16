@@ -3,9 +3,10 @@ import { AuthService } from './auth.service';
 import { UserModule } from '../user/user.module';
 import { AuthController } from './auth.controller';
 import { JwtModule } from '@nestjs/jwt';
-import { JWT_SECRET } from './example.secret';
+import { JWT_SECRET } from './auth.constant';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth.guard';
+import { RolesGuard } from '../role/role.guard';
 
 @Module({
   imports: [

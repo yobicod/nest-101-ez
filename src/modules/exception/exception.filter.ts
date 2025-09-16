@@ -13,7 +13,6 @@ export class AllExceptionsFilter implements ExceptionFilter {
   constructor(private readonly responseBuilder: ResponseBuilderService) {}
 
   catch(exception: unknown, host: ArgumentsHost) {
-    console.log('🚀 ~ AllExceptionsFilter ~ catch ~ exception:', exception);
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
 

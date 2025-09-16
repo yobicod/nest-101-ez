@@ -13,7 +13,6 @@ export class ZodValidationPipe implements PipeTransform {
       const parsedValue = this.schema.parse(value); // Validates our incoming argument against the provided schema.
       return parsedValue;
     } catch (error) {
-      console.log('🚀 ~ ZodValidationPipe ~ transform ~ error:', error.issues);
       if (error instanceof ZodError) {
         throw new BadRequestException(
           error.issues.map((issue) => ({
