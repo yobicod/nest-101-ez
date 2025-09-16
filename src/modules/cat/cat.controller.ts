@@ -44,7 +44,7 @@ export class CatController {
 
   @Get('name/:catName')
   @HttpCode(HttpStatus.OK)
-  getCatByName(@Param('catName') catName: string) {
+  getCatByName(@Param('catName') catName: string): ResponseBuilder<Cat[]> {
     const cats = this.catService.findByName(catName);
     if (!cats.length) {
       throw new NotFoundException(
@@ -59,7 +59,7 @@ export class CatController {
   @Post('create')
   @HttpCode(HttpStatus.CREATED)
   @UsePipes(new ZodValidationPipe(createCatSchema))
-  createCat(@Body() body: CreateCatDto) {
+  createCat(@Body() body: CreateCatDto): ResponseBuilder<{ cat: unknown }> {
     return this.responseBuilderService.success({
       cat: body,
     });
